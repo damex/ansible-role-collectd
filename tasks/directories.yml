@@ -1,0 +1,19 @@
+---
+- name: ensure custom systemd directory
+  file:
+    name: "{{ collectd_custom_systemd_directory }}"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: 0755
+  become: true
+
+- name: cleanup collectd directories
+  file:
+    path: "{{ item }}"
+    state: "absent"
+  loop:
+    - /var/lib/collectd/rrd
+    - /etc/collectd/collectd.conf.d/filters.conf
+    - /etc/collectd/collectd.conf.d/thresholds.conf
+  become: true

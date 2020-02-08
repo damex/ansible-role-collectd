@@ -1,0 +1,21 @@
+---
+- name: ensure collectd.conf
+  template:
+    src: "collectd.conf.j2"
+    dest: "{{ collectd_configuration_file }}"
+    owner: "{{ collectd_user }}"
+    group: "{{ collectd_group }}"
+    mode: 0644
+  register: collectd_conf
+  become: true
+
+- name: ensure collectd plugins
+  template:
+    src: "collectd.plugin.j2"
+    dest: "{{ collectd_configuration_include_directory }}/{{ item.name }}.conf"
+    owner: "{{ collectd_user }}"
+    group: "{{ collectd_group }}"
+    mode: 0644
+  loop: "{{ collectd_plugins }}"
+  register: collectd_plugins_conf
+  become: true

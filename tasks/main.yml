@@ -1,0 +1,9 @@
+---
+- name: ensure collectd
+  block:
+    - import_tasks: package.yml
+    - import_tasks: directories.yml
+    - import_tasks: collectd.conf.yml
+    - import_tasks: systemd.yml
+  tags:
+    - collectd

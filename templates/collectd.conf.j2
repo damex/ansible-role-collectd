@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+Hostname "{{ collectd_hostname }}"
+AutoLoadPlugin {{ collectd_autoloadplugin }}
+CollectInternalStats {{ collectd_collectinternalstats }}
+
+BaseDir "{{ collectd_basedir }}"
+PIDFile "{{ collectd_pidfile }}"
+PluginDir "{{ collectd_plugindir }}"
+TypesDB "{{ collectd_typesdb }}"
+
+Interval {{ collectd_interval }}
+
+<Include "{{ collectd_configuration_include_directory }}">
+{% for collectd_configuration_include_filter in collectd_configuration_include_filters %}
+  Filter "{{ collectd_configuration_include_filter }}"
+{% endfor %}
+</Include>

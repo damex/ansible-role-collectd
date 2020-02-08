@@ -1,0 +1,8 @@
+# {{ ansible_managed }}
+[Service]
+RuntimeDirectory={{ collectd_pid_directory | basename }}
+PIDFile={{ collectd_pidfile }}
+# Backward compatibility with plugins that require socket to be available
+# Type=forking
+ExecStart=
+ExecStart={{ collectd_binary }} -P {{ collectd_pidfile }} -C {{ collectd_configuration_file }}

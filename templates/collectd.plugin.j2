@@ -1,0 +1,39 @@
+# {{ ansible_managed }}
+LoadPlugin "{{ item.name }}"
+<Plugin "{{ item.name }}">
+{% if item.options is defined %}
+{% for option in item.options | dict2items %}
+  {{ option.key }} "{{ option.value }}"
+{% endfor %}
+{% endif %}
+{% if item.blocks is defined %}
+{% for block in item.blocks %}
+{% if block.name is defined %}
+  <{{ block.block }} "{{ block.name }}">
+{% else %}
+  <{{ block.block }}>
+{% endif %}
+{% if block.options is defined %}
+{% for option in block.options | dict2items %}
+    {{ option.key }} "{{ option.value }}"
+{% endfor %}
+{% endif %}
+{% if block.sub_blocks is defined %}
+{% for sub_block in block.sub_blocks %}
+{% if sub_block.name is defined %}
+    <{{ sub_block.sub_block }} "{{ sub_block.name }}">
+{% else %}
+    <{{ sub_block.sub_block }}>
+{% endif %}
+{% if sub_block.options is defined %}
+{% for option in sub_block.options | dict2items %}
+      {{ option.key }} "{{ option.value }}"
+{% endfor %}
+{% endif %}
+    </{{ sub_block.sub_block }}>
+{% endfor %}
+{% endif %}
+  </{{ block.block }}>
+{% endfor %}
+{% endif %}
+</Plugin>

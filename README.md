@@ -1,1 +1,1 @@
-# ansible-role-collectd
+# ansible collectd role
