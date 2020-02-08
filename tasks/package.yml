@@ -1,0 +1,18 @@
+---
+- name: ensure collectd package
+  include_role:
+    name: "damex.package"
+  vars:
+    package_packages:
+      - name: "{{ collectd_package_name }}"
+        state: "{{ collectd_package_state }}"
+  when: not collectd_package_version
+
+- name: ensure collectd package with version
+  include_role:
+    name: "damex.package"
+  vars:
+    package_packages:
+      - name: "{{ collectd_package_name }}-{{ collectd_package_version }}"
+        state: "{{ collectd_package_state }}"
+  when: collectd_package_version | length
