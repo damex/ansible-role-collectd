@@ -18,7 +18,7 @@ collectd_collectinternalstats: true
 collectd_binary: "/usr/sbin/collectd"
 collectd_pid_dir: "/var/run/collectd"
 collectd_basedir: "/var/lib/collectd"
-collectd_pidfile: "{{ collectd_pid_directory }}/collectd.pid"
+collectd_pidfile: "{{ collectd_pid_dir }}/collectd.pid"
 collectd_plugindir: "/usr/lib/collectd"
 collectd_typesdb: "/usr/share/collectd/types.db"
 collectd_interval: 60

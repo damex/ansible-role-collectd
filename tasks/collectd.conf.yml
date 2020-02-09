@@ -12,7 +12,7 @@
 - name: ensure collectd plugins
   template:
     src: "collectd.plugin.j2"
-    dest: "{{ collectd_include_dir }}/{{ item.name }}.conf"
+    dest: "{{ collectd_conf_include_dir }}/{{ item.name }}.conf"
     owner: "{{ collectd_user }}"
     group: "{{ collectd_group }}"
     mode: 0644
