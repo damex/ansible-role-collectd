@@ -5,20 +5,20 @@ collectd_package_name: "collectd"
 collectd_package_version: ""
 collectd_package_state: "present"
 collectd_service_name: "collectd"
-collectd_configuration_directory: "/etc/collectd"
-collectd_configuration_file: "{{ collectd_configuration_directory }}/collectd.conf"
-collectd_configuration_include_directory: "{{ collectd_configuration_directory }}/collectd.conf.d"
-collectd_configuration_include_filters:
+collectd_conf_dir: "/etc/collectd"
+collectd_conf_file: "{{ collectd_conf_dir }}/collectd.conf"
+collectd_conf_include_dir: "{{ collectd_conf_dir }}/collectd.conf.d"
+collectd_conf_include_filters:
   - "*.conf"
-collectd_custom_systemd_directory: "/etc/systemd/system/{{ collectd_service_name }}.service.d"
-collectd_custom_systemd_file: "{{ collectd_custom_systemd_directory }}/custom.conf"
+collectd_systemd_dir: "/etc/systemd/system/collectd.service.d"
+collectd_systemd_file: "{{ collectd_systemd_dir }}/custom.conf"
 collectd_hostname: "{{ inventory_hostname }}"
 collectd_autoloadplugin: false
 collectd_collectinternalstats: true
 collectd_binary: "/usr/sbin/collectd"
-collectd_pid_directory: "/var/run/collectd"
+collectd_pid_dir: "/var/run/collectd"
 collectd_basedir: "/var/lib/collectd"
-collectd_pidfile: "{{ collectd_pid_directory }}/collectd.pid"
+collectd_pidfile: "{{ collectd_pid_dir }}/collectd.pid"
 collectd_plugindir: "/usr/lib/collectd"
 collectd_typesdb: "/usr/share/collectd/types.db"
 collectd_interval: 60
