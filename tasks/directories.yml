@@ -1,7 +1,7 @@
 ---
-- name: ensure custom systemd directory
+- name: ensure systemd directory
   file:
-    name: "{{ collectd_custom_systemd_directory }}"
+    name: "{{ collectd_systemd_dir }}"
     state: directory
     owner: "root"
     group: "root"

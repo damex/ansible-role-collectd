@@ -1,41 +1,36 @@
 ---
 - name: ensure systemd
   block:
-    - name: ensure systemd custom configuration
+    - name: ensure systemd configuration
       template:
         src: "collectd.service.j2"
-        dest: "{{ collectd_custom_systemd_file }}"
+        dest: "{{ collectd_systemd_file }}"
         owner: "{{ collectd_user }}"
         group: "{{ collectd_group }}"
         mode: 0644
-      register: collectd_custom_systemd_file
-    
+      register: collectd_systemd_file
     - name: ensure systemd configuration is reloaded
       systemd:
-        daemon_reload: yes
-      when: collectd_custom_systemd_file.changed
-    
+        daemon_reload: true
+      when: collectd_systemd_file.changed
     - name: ensure collectd service is enabled
       systemd:
         name: "{{ collectd_service_name }}"
         enabled: true
-    
     - name: ensure collectd service is started
       systemd:
         name: "{{ collectd_service_name }}"
         state: "started"
-    
     - name: ensure collectd configuration is correct
       command: collectd -t
       become: true
       when: collectd_conf.changed or
         collectd_plugins_conf.changed
-    
-    - name: ensure collectd is restarted
+    - name: ensure collectd service is restarted
       systemd:
         name: "{{ collectd_service_name }}"
         state: "restarted"
       when: collectd_conf.changed or
-        collectd_custom_systemd_file.changed or
+        collectd_systemd_file.changed or
         collectd_plugins_conf.changed
   become: true

@@ -10,8 +10,8 @@ TypesDB "{{ collectd_typesdb }}"
 
 Interval {{ collectd_interval }}
 
-<Include "{{ collectd_configuration_include_directory }}">
-{% for collectd_configuration_include_filter in collectd_configuration_include_filters %}
-  Filter "{{ collectd_configuration_include_filter }}"
+<Include "{{ collectd_conf_include_dir }}">
+{% for collectd_conf_include_filter in collectd_conf_include_filters %}
+  Filter "{{ collectd_conf_include_filter }}"
 {% endfor %}
 </Include>
