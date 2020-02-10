@@ -16,7 +16,7 @@ collectd_hostname: "{{ inventory_hostname }}"
 collectd_autoloadplugin: false
 collectd_collectinternalstats: true
 collectd_binary: "/usr/sbin/collectd"
-collectd_pid_dir: "/var/run/collectd"
+collectd_pid_dir: "/run/collectd"
 collectd_basedir: "/var/lib/collectd"
 collectd_pidfile: "{{ collectd_pid_dir }}/collectd.pid"
 collectd_plugindir: "/usr/lib/collectd"
