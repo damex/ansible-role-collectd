@@ -1,4 +1,22 @@
 ---
+- name: ensure collectd configuration directory
+  file:
+    name: "{{ collectd_conf_dir }}"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: 0755
+  become: true
+
+- name: ensure collectd configuration include directory
+  file:
+    name: "{{ collectd_conf_include_dir }}"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: 0755
+  become: true
+
 - name: ensure systemd directory
   file:
     name: "{{ collectd_systemd_dir }}"
