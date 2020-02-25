@@ -23,3 +23,6 @@ collectd_plugindir: "/usr/lib/collectd"
 collectd_typesdb: "/usr/share/collectd/types.db"
 collectd_interval: 60
 collectd_plugins: []
+
+collectd_prometheus_file_sd_target_name: "collectd"
+collectd_prometheus_file_sd_target_port: 9103
