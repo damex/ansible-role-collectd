@@ -1,14 +1,17 @@
 # {{ ansible_managed }}
-Hostname "{{ collectd_hostname }}"
-AutoLoadPlugin {{ collectd_autoloadplugin }}
-CollectInternalStats {{ collectd_collectinternalstats }}
-
 BaseDir "{{ collectd_basedir }}"
 PIDFile "{{ collectd_pidfile }}"
 PluginDir "{{ collectd_plugindir }}"
 TypesDB "{{ collectd_typesdb }}"
-
+AutoLoadPlugin {{ collectd_autoloadplugin }}
+CollectInternalStats {{ collectd_collectinternalstats }}
 Interval {{ collectd_interval }}
+MaxReadInterval {{ collectd_maxreadinterval }}
+Timeout {{ collectd_timeout }}
+ReadThreads {{ collectd_readthreads }}
+WriteThreads {{ collectd_writethreads }}
+Hostname "{{ collectd_hostname }}"
+FQDNLookup {{ collectd_fqdnlookup }}
 
 <Include "{{ collectd_conf_include_dir }}">
 {% for collectd_conf_include_filter in collectd_conf_include_filters %}

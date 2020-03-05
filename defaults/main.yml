@@ -12,18 +12,25 @@ collectd_conf_include_filters:
   - "*.conf"
 collectd_systemd_dir: "/etc/systemd/system/collectd.service.d"
 collectd_systemd_file: "{{ collectd_systemd_dir }}/custom.conf"
-collectd_hostname: "{{ inventory_hostname }}"
-collectd_autoloadplugin: false
-collectd_collectinternalstats: true
 collectd_binary: "/usr/sbin/collectd"
 collectd_pid_dir: "/run/collectd"
 collectd_basedir: "/var/lib/collectd"
 collectd_pidfile: "{{ collectd_pid_dir }}/collectd.pid"
 collectd_plugindir: "/usr/lib/collectd"
 collectd_typesdb: "/usr/share/collectd/types.db"
+collectd_autoloadplugin: false
+collectd_collectinternalstats: true
 collectd_interval: 60
-collectd_plugins: []
+collectd_maxreadinterval: 86400
+collectd_timeout: 2
+collectd_readthreads: 5
+collectd_writethreads: 5
+collectd_writequeuelimithigh: 0
+collectd_writequeuelimitlow: 0
+collectd_hostname: "{{ inventory_hostname }}"
+collectd_fqdnlookup: false
 
+collectd_plugins: []
 collectd_prometheus_file_sd: false
 collectd_prometheus_file_sd_target_name: "collectd"
 collectd_prometheus_file_sd_target_port: 9103
