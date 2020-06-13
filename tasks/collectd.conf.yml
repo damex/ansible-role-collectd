@@ -6,6 +6,7 @@
     owner: "{{ collectd_user }}"
     group: "{{ collectd_group }}"
     mode: 0644
+    validate: "collectd -t"
   register: collectd_conf
   become: true
 
@@ -16,6 +17,7 @@
     owner: "{{ collectd_user }}"
     group: "{{ collectd_group }}"
     mode: 0644
+    validate: "collectd -t"
   loop: "{{ collectd_plugins }}"
   register: collectd_plugins_conf
   become: true

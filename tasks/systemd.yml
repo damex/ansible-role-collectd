@@ -21,11 +21,6 @@
       systemd:
         name: "{{ collectd_service_name }}"
         state: "started"
-    - name: ensure collectd configuration is correct
-      command: collectd -t
-      become: true
-      when: collectd_conf.changed or
-        collectd_plugins_conf.changed
     - name: ensure collectd service is restarted
       systemd:
         name: "{{ collectd_service_name }}"
