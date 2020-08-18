@@ -1,6 +1,6 @@
 # ansible collectd role
 
-[![Build Status](https://travis-ci.com/damex/ansible-role-collectd.svg?branch=master)](https://travis-ci.com/damex/ansible-role-collectd)
+[![linting](https://github.com/damex/ansible-role-collectd/workflows/linting/badge.svg)](https://github.com/damex/ansible-role-collectd/actions)
 
 The collectd role is designed to be used with Debian distributive.
 
